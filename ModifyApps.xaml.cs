@@ -37,13 +37,19 @@ namespace DebloatWindows10
         private void UninstallApps_Click(object sender, RoutedEventArgs e)
         {
             List<AppItem> appItemToUninstall = AppsInfo.GetInstalledAppsInfo(false).FindAll(x => x.Checked == true);
-            new ModifyAppsScript(appItemToUninstall, "uninstall");
+            if(appItemToUninstall.Count > 0)
+            {
+                new ModifyAppsScript(appItemToUninstall, "uninstall");
+            }
         }
 
         private void RestoreApps_Click(object sender, RoutedEventArgs e)
         {
             List<AppItem> appItemToRestore = AppsInfo.GetUninstalledAppsInfo(false).FindAll(x => x.Checked == true);
-            new ModifyAppsScript(appItemToRestore, "restore");
+            if(appItemToRestore.Count > 0)
+            {
+                new ModifyAppsScript(appItemToRestore, "restore");
+            }
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
