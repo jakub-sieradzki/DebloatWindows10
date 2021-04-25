@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <PublishSingleFile>true</PublishSingleFile>
+    <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <PackageId>Debloat Windows 10</PackageId>
+    <Authors>Jakub Sieradzki</Authors>
+    <Product>Debloat Windows 10</Product>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyName>Debloat Windows 10</AssemblyName>
+  </PropertyGroup>
+
+</Project>

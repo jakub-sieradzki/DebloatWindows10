@@ -1,0 +1,78 @@
+﻿<Page x:Class="DebloatWindows10.ModifyApps"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DebloatWindows10"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ModifyApps">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Menu>
+                <MenuItem Header="Advanced">
+                    <MenuItem x:Name="showAllAppsCheck" Header="Show all removable apps (system may become unstable!)" IsCheckable="True" IsChecked="False" Click="ShowAllAppsCheck_Click">
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </Grid>
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Row="0" Width="25" Height="25" FontSize="12" HorizontalAlignment="Left" FontFamily="Segoe MDL2 Assets" Content="&#xE72B;" Click="BackButton_Click" Background="{x:Null}" Foreground="Black" BorderBrush="{x:Null}"></Button>
+            <TextBlock Grid.Row="0" x:Name="titleTextBlock" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">test</TextBlock>
+            <ListView Margin="0 10 0 0" Grid.Row="1" Focusable="False" x:Name="modifyAppsListView" PreviewMouseLeftButtonUp="ModifyAppsListView_PreviewMouseLeftButtonUp">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel Margin="0 10" HorizontalAlignment="Stretch">
+                            <CheckBox IsChecked="{Binding Checked}" Margin="0 0 10 0" VerticalAlignment="Center" x:Name="selectAppCheckBox"></CheckBox>
+                            <Border Height="20" Width="20" Background="#000" Margin="0 0 10 0">
+                                <Image Source="{Binding Logo}" Width="20" Height="20" OpacityMask="{x:Null}" VerticalAlignment="Center"></Image>
+                            </Border>
+                            <TextBlock Text="{Binding DisplayName}" VerticalAlignment="Center"></TextBlock>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Grid.Row="2" Width="80" Click="SelectAllButton_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 10 0 0" x:Name="selectAllButton" Content="Select all"></Button>
+            <Button Grid.Row="2" Width="60" Margin="0 10 0 0" HorizontalAlignment="Center" x:Name="modifyButton"></Button>
+            <Grid Grid.Row="3" Height="40" Margin="0 10 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="modifyAppName" Grid.Column="0" Grid.Row="0"></TextBlock>
+                <ProgressBar Grid.Column="0" Grid.Row="1" x:Name="modifyProgressBar" Height="20"/>
+                <TextBlock Grid.Column="1" Grid.Row="1" Margin="10 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Center" TextAlignment="Center" x:Name="modifyPercent" Width="30">0%</TextBlock>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Page>
