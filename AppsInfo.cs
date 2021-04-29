@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Windows.ApplicationModel;
 using Windows.Management.Deployment;
 
 namespace DebloatWindows10
@@ -55,14 +57,15 @@ namespace DebloatWindows10
                 {
                     if (package.InstalledPath.IndexOf(@"\Program Files\") > 0)
                     {
+                        List<string> info = PackageInfo(package);
                         InstalledAppsInfo.Add(
                            new AppItem()
                            {
                                Checked = false,
-                               Name = package.Id.Name,
-                               PackageFullName = package.Id.FullName,
-                               Logo = package.Logo.AbsoluteUri,
-                               DisplayName = package.DisplayName
+                               Name = info[0],
+                               PackageFullName = info[1],
+                               Logo = info[2],
+                               DisplayName = info[3]
                            });
                     }
                 }
@@ -73,15 +76,16 @@ namespace DebloatWindows10
                 {
                     if (SuggestedAppsList.appsNameArray.Any(package.Id.Name.ToLower().Contains))
                     {
+                        List<string> info = PackageInfo(package);
                         InstalledAppsInfo.Add(
-                        new AppItem()
-                        {
-                            Checked = false,
-                            Name = package.Id.Name,
-                            PackageFullName = package.Id.FullName,
-                            Logo = package.Logo.AbsoluteUri,
-                            DisplayName = package.DisplayName
-                        });
+                           new AppItem()
+                           {
+                               Checked = false,
+                               Name = info[0],
+                               PackageFullName = info[1],
+                               Logo = info[2],
+                               DisplayName = info[3]
+                           });
                     }
                 }
             }
@@ -102,15 +106,16 @@ namespace DebloatWindows10
                 {
                     if (package.InstalledPath.IndexOf(@"\Program Files\") > 0)
                     {
+                        List<string> info = PackageInfo(package);
                         list.Add(
-                            new AppItem()
-                            {
-                                Checked = false,
-                                Name = package.Id.Name,
-                                PackageFullName = package.Id.FullName,
-                                Logo = package.Logo.AbsoluteUri,
-                                DisplayName = package.DisplayName
-                            });
+                           new AppItem()
+                           {
+                               Checked = false,
+                               Name = info[0],
+                               PackageFullName = info[1],
+                               Logo = info[2],
+                               DisplayName = info[3]
+                           });
                     }
                 }
             }
@@ -120,15 +125,16 @@ namespace DebloatWindows10
                 {
                     if (SuggestedAppsList.appsNameArray.Any(package.Id.Name.ToLower().Contains))
                     {
+                        List<string> info = PackageInfo(package);
                         list.Add(
-                            new AppItem()
-                            {
-                                Checked = false,
-                                Name = package.Id.Name,
-                                PackageFullName = package.Id.FullName,
-                                Logo = package.Logo.AbsoluteUri,
-                                DisplayName = package.DisplayName
-                            });
+                           new AppItem()
+                           {
+                               Checked = false,
+                               Name = info[0],
+                               PackageFullName = info[1],
+                               Logo = info[2],
+                               DisplayName = info[3]
+                           });
                     }
                 }
             }
@@ -151,6 +157,53 @@ namespace DebloatWindows10
                     UninstalledAppsInfo.Add(allApps[i]);
                 }
             }
+        }
+
+        private static List<string> PackageInfo(Package package)
+        {
+            List<string> info = new List<string>();
+
+            try
+            {
+                info.Add(package.Id.Name);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                info.Add("");
+            }
+
+            try
+            {
+                info.Add(package.Id.FullName);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                info.Add("");
+            }
+
+            try
+            {
+                info.Add(package.Logo.AbsoluteUri);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                info.Add("");
+            }
+
+            try
+            {
+                info.Add(package.DisplayName);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                info.Add("");
+            }
+
+            return info;
         }
     }
 }

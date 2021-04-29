@@ -121,5 +121,13 @@ namespace DebloatWindows10
                 }
             }));
         }
+
+        public void UpdateSelectButton()
+        {
+            Application.Current.Dispatcher.Invoke(new Action(() =>
+            {
+                modifyAppsPage.selectAllButton.Content = "Select all";
+            }));
+        }
     }
 }

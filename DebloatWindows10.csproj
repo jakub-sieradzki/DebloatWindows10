@@ -11,8 +11,9 @@
     <PackageId>Debloat Windows 10</PackageId>
     <Authors>Jakub Sieradzki</Authors>
     <Product>Debloat Windows 10</Product>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
     <AssemblyName>Debloat Windows 10</AssemblyName>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
 </Project>

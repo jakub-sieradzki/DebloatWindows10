@@ -73,6 +73,7 @@ namespace DebloatWindows10
             updateLayout.SetEnabledModifyButton(true);
             updateLayout.SetEnabledSelectAllButton(true);
             updateLayout.SetEnabledList(true);
+            updateLayout.UpdateSelectButton();
         }
 
         private void WorkerProgressChanged(object sender, ProgressChangedEventArgs e)
