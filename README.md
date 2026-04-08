@@ -20,7 +20,7 @@ You do not need to compile the application yourself to use it. You can download 
 ## System Requirements
 
 * **Operating System:** Windows 10 version 2004 (Build 19041) or later.
-* **Framework:** .NET 5.0 Desktop Runtime.
+* **Framework:** .NET 5.0 Desktop Runtime (but you shouldn't need to install it).
 
 ## How to Compile / Build from Source
 
